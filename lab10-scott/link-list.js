@@ -1,15 +1,14 @@
 'use strict';
 
-
-class linkList {
+module.exports = class LinkList {
   constructor(value){
     this.value = value;
     this.next = null;
   }
 
   appendNode(node){
-    if(!(node instanceof linkList))
-    return null;
+    if(!(node instanceof LinkList))
+      return null;
     if(!this.next){
       this.next = node;
       return;
@@ -19,8 +18,9 @@ class linkList {
   forEach(callback){
     let current = this;
     while(current){
-      callback(current, this)
+      callback(current, this);
       current = current.next;
     }
   }
-}
+
+};
