@@ -15,12 +15,24 @@ module.exports = class LinkList {
     }
     this.next.appendNode(node);
   }
+
   forEach(callback){
     let current = this;
     while(current){
       callback(current, this);
       current = current.next;
     }
+  }
+
+  findMiddle(){
+    let slow;
+    let fast;
+    slow = fast = this;
+    while(fast && fast.next && fast.next.next){
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow;
   }
 
 };
