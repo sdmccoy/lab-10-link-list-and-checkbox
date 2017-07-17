@@ -6,7 +6,7 @@ module.exports = class LinkList {
     this.next = null;
   }
 
-  //BIG O: O(N^2) while loop nested in a for each
+  //BIG O: O(N)
   appendNode(node){
     if(!(node instanceof LinkList))
       return null;
@@ -16,6 +16,7 @@ module.exports = class LinkList {
     }
     this.next.appendNode(node);
   }
+  //BIG O: O(N)
   forEach(callback){
     let current = this;
     while(current){
