@@ -91,4 +91,17 @@ describe('Testing LINK LIST', () => {
       });
     });
   });
+
+  describe('Testing the reverseTraverse method', () => {
+    describe('if successful', () =>{
+      it('it should travers the list in reverse', () =>{
+        let list = new LinkList(1);
+        list.appendNode(new LinkList(2));
+        list.appendNode(new LinkList(3));
+        list.traverseReverse();
+        expect(list.value).toEqual(1);
+        expect(list.next.value).toEqual(2);
+      });
+    });
+  });
 });
