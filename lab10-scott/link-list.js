@@ -6,6 +6,7 @@ module.exports = class LinkList {
     this.next = null;
   }
 
+  //BIG O: O(N^2) while loop nested in a for each
   appendNode(node){
     if(!(node instanceof LinkList))
       return null;
@@ -15,7 +16,6 @@ module.exports = class LinkList {
     }
     this.next.appendNode(node);
   }
-
   forEach(callback){
     let current = this;
     while(current){
@@ -23,7 +23,7 @@ module.exports = class LinkList {
       current = current.next;
     }
   }
-
+//BIG O: O(log N)
   findMiddle(){
     let slow;
     let fast;
@@ -34,5 +34,19 @@ module.exports = class LinkList {
     }
     return slow;
   }
-
+//BIG O: O(N)
+  traverseReverse(){
+    let prev = null;
+    let cur = this;
+    while (cur) {
+      let temp = cur.next;
+      //set cur.next to null
+      cur.next = prev;
+      //set prev to this
+      prev = cur;
+      //set the current.next stored in temp back to cur.
+      cur = temp;
+    }
+    this.next = prev.next;
+  }
 };
